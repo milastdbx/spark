@@ -38,6 +38,7 @@ private case class MsSqlServerDialect() extends JdbcDialect with NoLegacyJDBCErr
   override def canHandle(url: String): Boolean =
     url.toLowerCase(Locale.ROOT).startsWith("jdbc:sqlserver")
 
+  // See https://learn.microsoft.com/en-us/sql/relational-databases/errors-events/database-engine-events-and-errors-0-to-999?view=sql-server-ver16.
   override def isObjectNotFoundException(e: SQLException): Boolean = {
     e.getErrorCode == 208
   }

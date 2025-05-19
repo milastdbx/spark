@@ -38,6 +38,7 @@ private case class DerbyDialect() extends JdbcDialect with NoLegacyJDBCError {
   override def isSupportedFunction(funcName: String): Boolean =
     supportedFunctions.contains(funcName)
 
+  // See https://db.apache.org/derby/docs/10.4/ref/rrefexcept71493.html.
   override def isObjectNotFoundException(e: SQLException): Boolean = {
     e.getSQLState.equalsIgnoreCase("42Y07") ||
       e.getSQLState.equalsIgnoreCase("42X05") ||

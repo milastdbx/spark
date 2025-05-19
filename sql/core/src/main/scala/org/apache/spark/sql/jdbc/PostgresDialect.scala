@@ -54,6 +54,7 @@ private case class PostgresDialect()
   override def isSupportedFunction(funcName: String): Boolean =
     supportedFunctions.contains(funcName)
 
+  // See https://www.postgresql.org/docs/current/errcodes-appendix.html.
   override def isObjectNotFoundException(e: SQLException): Boolean = {
     e.getSQLState == "42P01" ||
       e.getSQLState == "3F000" ||

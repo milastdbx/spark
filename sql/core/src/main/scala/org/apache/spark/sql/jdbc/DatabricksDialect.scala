@@ -31,6 +31,7 @@ private case class DatabricksDialect() extends JdbcDialect with NoLegacyJDBCErro
     url.startsWith("jdbc:databricks")
   }
 
+  // See https://docs.databricks.com/aws/en/error-messages/sqlstates.
   override def isObjectNotFoundException(e: SQLException): Boolean = {
     e.getSQLState == "42P01" || e.getSQLState == "42704"
   }

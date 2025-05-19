@@ -47,6 +47,7 @@ private case class DB2Dialect() extends JdbcDialect with SQLConfHelper with NoLe
   override def isSupportedFunction(funcName: String): Boolean =
     supportedFunctions.contains(funcName)
 
+  // See https://www.ibm.com/docs/en/db2-for-zos/12.0.0?topic=codes-error-sql.
   override def isObjectNotFoundException(e: SQLException): Boolean = {
     e.getErrorCode == -204
   }
