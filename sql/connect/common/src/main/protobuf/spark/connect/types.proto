@@ -64,6 +64,9 @@ message DataType {
     Map map = 22;
     Variant variant = 25;
 
+    // Reserved for geometry and geography types
+    reserved 26, 27;
+
     // UserDefinedType
     UDT udt = 23;
 
